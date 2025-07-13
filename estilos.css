@@ -1,49 +1,50 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
   background: #ffffff;
-  margin: 0;
   padding: 2rem;
 }
 h1 {
   text-align: center;
+  margin-bottom: 2rem;
 }
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
 }
-.card {
-  border-radius: 6px;
+.semestre {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   padding: 1rem;
-  min-width: 200px;
-  max-width: 220px;
-  color: #000;
+}
+.semestre h2 {
+  margin-top: 0;
+}
+.ramo {
+  padding: 0.6rem;
+  margin: 0.4rem 0;
+  border-radius: 6px;
   cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+.ramo.aprobado {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.ramo.desbloqueado {
+  border-color: #4CAF50;
+}
+.ramo.bloqueado {
   opacity: 0.4;
-  transition: all 0.2s ease-in-out;
+  pointer-events: none;
 }
-.card.approved {
-  border: 2px solid green;
-  opacity: 1;
-}
-.card .codigo {
-  font-weight: bold;
-}
-.card .creditos {
-  font-size: 0.9em;
-  color: #333;
-}
-.card .prereq {
-  font-size: 0.8em;
-  color: #555;
-  margin-top: 0.3rem;
-}
-
-/* Colores personalizados */
-.verde    { background-color: #b6e9b6; }
-.azul     { background-color: #b6d8ff; }
-.naranja  { background-color: #ffd9b3; }
-.amarillo { background-color: #fff7b3; }
-.gris     { background-color: #dcdcdc; }
-.blanco   { background-color: #ffffff; border: 1px solid #ccc; }
+.core { background-color: #CCE5FF; }
+.der { background-color: #FFE5CC; }
+.electivo { background-color: #E6FFE6; }
+.gym { background-color: #F9CCFF; }
+.liderazgo { background-color: #FFFFCC; }
+.liberal { background-color: #DDDDDD; }
+.azul { background-color: #cce0ff; }
+.naranjo { background-color: #ffcc99; }
