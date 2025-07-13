@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Derecho UAI</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .semestre {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .semestre h2 {
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+    .ramo {
+      background: #e9f0ff;
+      border-left: 4px solid #4a90e2;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    .ramo small {
+      color: #555;
+      display: block;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Derecho UAI</h1>
+  <div id="app" class="grid"></div>
+  <script src="script.js"></script>
+  <script>
+    const app = document.getElementById("app");
 
+    malla.forEach(({ semestre, ramos }) => {
+      const card = document.createElement("div");
+      card.className = "semestre";
+
+      const title = document.createElement("h2");
+      title.textContent = `Semestre ${semestre}`;
+      card.appendChild(title);
+
+      ramos.forEach(({ codigo, nombre, prerequisitos }) => {
+        const div = document.createElement("div");
+        div.className = "ramo";
+        div.innerHTML = `<strong>${codigo}</strong>: ${nombre}`;
+        if (prerequisitos.length) {
+          const small = document.createElement("small");
+          small.textContent = `Pre: ${prerequisitos.join(", ")}`;
+          div.appendChild(small);
+        }
+        card.appendChild(div);
+      });
+
+      app.appendChild(card);
+    });
+  </script>
+</body>
+</html>
